@@ -9,10 +9,10 @@ const auth = (req,res,next)=>{
             console.log(decoded)
             next()
         }else{
-            res.send("Not authorized")
+            res.send({"msg":"Not authorized"})
         }
     }else{
-        res.send("Not authorized")
+        res.send({"msg":"Not authorized"})
     }
 }
 

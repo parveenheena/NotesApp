@@ -14,7 +14,7 @@ userRouter.post("/register",async(req,res)=>{
             if(hash){
                 const user = new userModel({name,email,pass:hash})
                 await user.save()
-                res.status(200).send("User has been registered")
+                res.status(200).send({"msg":"User has been registered"})
             }else{
                 res.status(200).send({"Error":err})
             }  
@@ -35,14 +35,14 @@ userRouter.post("/login",async(req,res)=>{
             if(result){
                 res.send({"login successful":token})
             }else{
-                res.send("wrong credentials")
+                res.send({"msg":"wrong credentials"})
             }
         })
     }catch(err){
         res.send(err)
     }
 }else{
-    res.send("Please register yourself")
+    res.send({"msg":"Please register yourself"})
 }
 })
 
