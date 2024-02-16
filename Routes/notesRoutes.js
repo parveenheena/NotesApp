@@ -17,7 +17,17 @@ notesRouter.post("/",auth,async(req,res)=>{
 notesRouter.get("/",auth,async(req,res)=>{
     try{
         const notes = await notesModel.find({userId:req.body.userId})
-        res.send(notes)
+        res.send({notes})
+    }catch(err){
+        res.send({err})
+    }
+})
+
+notesRouter.get("/:id",auth,async(req,res)=>{
+    const {id} = req.params
+    try{
+        const notes = await notesModel.find({_id:id})
+        res.send({notes})
     }catch(err){
         res.send({err})
     }
